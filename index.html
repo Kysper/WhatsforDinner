@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Add the responsive viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's For Dinner? | Group 5 Studio</title>
+    <!-- Link Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700|Open+Sans" rel="stylesheet">
+    <!-- Link Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <!-- Link Bulma -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <!-- Link Customized CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+   
+    <link rel="icon" 
+      type="image/png" 
+      href="assets/images/img-cooking-icon.png">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar is-transparent">
+        <div class="navbar-brand">
+            <a class="site-logo navbar-item" href="#">
+                What's For Dinner?
+            </a>
+            <div class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="start-menu-ideas">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </div>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a id="start-menu-ideas" class="navbar-link" href="#">
+                        Starter Meal Ideas
+                    </a>
+                    <div class="navbar-dropdown is-boxed">
+                        <a id="search-sheet-pan" data-id="Sheet Pan Recipes" class="navbar-item quickPicks" href="#">
+                            Sheet Pan Recipes
+                        </a>
+                        <a id="search-15-min" data-id="15 Minute" class="navbar-item quickPicks" href="#">
+                            15-Min Cooking Dinner
+                        </a>
+                        <hr class="navbar-divider">
+                        <a id="search-random-recipe" class="navbar-item is-active" href="#">
+                            Random recipe!
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="show-user-modal bd-tw-button button">
+                                <span class="icon">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span id="username">
+                                    Login
+                                </span>
+                            </a>
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Username Modal -->
+    <div id="ask-username" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p id="show-user-title" class="modal-card-title">Enter your name</p>
+                <button class="user-modal-close  delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="field">
+                    <label for="enter-username" class="label">Name</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="enter-username" class="input is-primary" type="text" placeholder="Enter your name">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button id="submit-user" class="button is-primary">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button id="cancel-user" class="button is-text">Cancel</button>
+                    </div>
+                </div>
+
+        </div>
+        </footer>
+    </div>
+    </div>
+    <!-- Hero + search bar -->
+    <section id="start-search" class="hero is-medium is-white">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="site-logo title is-1">
+                    What's For Dinner?
+                </h1>
+                <p class="subtitle">
+                    You will find great meals that the <strong>whole family</strong> will enjoy!
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="site-header" class="hero is-large">
+        <div class="hero-body level">
+            <div class="container">
+
+                <div class="columns is-mobile is-centered">
+                    <div class="column is-half">
+                        <div class="field is-fullwidth has-addons">
+                            <div class="control">
+                                <input id="find-recipe" class="input" type="text" placeholder="Find a recipe">
+                            </div>
+                            <div id="search-recipe" class="control">
+                                <a class="button is-primary">
+                                    Search
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Create content area for recipes using tile + card + box -->
+
+    <section>
+        <div class="container-fluid">
+            <div id="display-recipe" class="tile is-ancestor is-mobile">
+
+            </div> <!-- End tile is-ancestor -->
+        </div>
+    </section>
+
+
+    <!-- End content area -->
+
+    <!-- Recipe Modal -->
+    <div id="show-recipe" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p id="show-recipe-title" class="modal-card-title">Kale Salad</p>
+                <button class="recipe-modal-close delete" aria-label="close"></button>
+            </header>
+            <section id="show-recipe-body" class="modal-card-body">
+                <!-- Content ... -->
+            </section>
+            <footer class="modal-card-foot">
+                <button class="show-recipe-footer button has-background-primary">Add To Weekly Planner</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Ingredients Modal -->
+    <div id="show-ingredients" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p id="show-ingredients-title" class="modal-card-title">Kale Salad</p>
+                <button class="ingredients-modal-close delete" aria-label="close"></button>
+            </header>
+            <section id="show-ingredients-body" class="modal-card-body">
+                <!-- Content ... -->
+            </section>
+            <footer id="show-ingredients-footer" class="modal-card-foot">
+                <button class="button has-background-primary">Add To Weekly Planner</button>
+                <button class="button is-success">Add To Weekly Planner</button>
+                <button class="modal-close button" aria-label="close"></button>
+            </footer>
+        </div>
+    </div>
+
+    <hr>
+
+
+    <!-- Responsive Table to display weekly meal plan -->
+    <section class="hero is-primary is-bold">
+        <div class="hero-body" id="weekly-planner-body">
+            <div class="container">
+
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent is-12">
+                        <div class="tile is-child">
+                            <h2 class="site-logo title is-1 has-text-white">
+                                What's For Dinner?
+                            </h2>
+                        </div>
+                        <div class="tile is-child">
+
+                            <p class="control">
+                                <a id="export" class="button is-primary is-inverted" href="#">
+                                    <span class="icon">
+                                        <i class="fas fa-download"></i>
+                                    </span>
+                                        <span> Quick Download</span>
+                                    </a>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <article class="tile is-child">
+                        <!-- Testing new layout for weekly meal plan -->
+                        <table id="weekly-plan" class="table is-striped is-hoverable js-table-data">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <!-- Day of the Week -->
+                                    </th>
+                                    <th><i class="fas fa-utensils"></i> Recipes</th>
+                                    <th><i class="far fa-comments"></i> Comments</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <!--------------------------- Monday --------------------------->
+                                <tr class="mealplan-cell" id="row-monday">
+                                    <th>Monday</th>
+                                    <td data-label="Recipe" id="mon-recipe" class="recipe-link" contenteditable="false"><a
+                                            href="#" title="recipe-name">
+                                            <!-- recipe name--></a></td>
+                                    <td data-label="Comment" id="mon-comment" contenteditable="false">
+                                        <!-- comment -->
+                                    </td>
+                                    <td data-label="Actions" class="day-actions">
+                                        <!-- Actions -->
+                                        <!-- Add -->
+                                        <a id="mon-add" data-action="add" class="has-text-success mon-actions is-hidden"
+                                            title="Add the details of this meal"><i class="fas fa-plus-circle" alt="Add"></i></a>
+                                        <!-- Change -->
+                                        <a id="mon-change" data-action="change" class="has-text-warning mon-actions"
+                                            href="#" title="Change the details of this meal"><i class="fas fa-pen" alt="Change"></i></a>
+                                        <!-- Remove -->
+                                        <a id="mon-remove" data-action="remove" class="has-text-danger mon-actions"
+                                            href="#" title="Remove the details of this meal"><span class="remove has-text-danger actions"><i
+                                                    class="fas fa-trash" alt="Remove"></i></span></a>
+                                    </td>
+                                </tr>
+                                <!--------------------------- End Monday --------------------------->
+                                <!--------------------------- Tuesday --------------------------->
+                                <tr class="mealplan-cell" id="row-tuesday">
+                                    <th>Tuesday</th>
+                                    <td id="tue-recipe" class="recipe-link" contenteditable="false"><a href="#" title="recipe-name">
+                                            <!-- recipe name--></a></td>
+                                    <td id="tue-comment" contenteditable="false">
+                                        <!-- comment -->
+                                    </td>
+                                    <td class="day-actions">
+                                        <!-- Actions -->
+                                        <!-- Add -->
+                                        <a id="tue-add" data-action="add" class="has-text-success tue-actions is-hidden"
+                                            title="Add the details of this meal"><i class="fas fa-plus-circle" alt="Add"></i></a>
+                                        <!-- Change -->
+                                        <a id="tue-change" data-action="change" class="has-text-warning tue-actions"
+                                            href="#" title="Change the details of this meal"><i class="fas fa-pen" alt="Change"></i></a>
+                                        <!-- Remove -->
+                                        <a id="tue-remove" data-action="remove" class="has-text-danger tue-actions"
+                                            href="#" title="Remove the details of this meal"><span class="remove has-text-danger actions"><i
+                                                    class="fas fa-trash" alt="Remove"></i></span></a>
+                                    </td>
+                                </tr>
+                                <!--------------------------- End Tuesday --------------------------->
+                                <!--------------------------- Wednesday --------------------------->
+                                <tr class="mealplan-cell" id="row-wednesday">
+                                    <th>Wednesday</th>
+                                    <td id="wed-recipe" class="recipe-link" contenteditable="false"><a href="#" title="recipe-name">
+                                            <!-- recipe name--></a></td>
+                                    <td id="wed-comment" contenteditable="false">
+                                        <!-- comment -->
+                                    </td>
+                                    <td class="day-actions">
+                                        <!-- Actions -->
+                                        <!-- Add -->
+                                        <a id="wed-add" data-action="add" class="has-text-success wed-actions is-hidden"
+                                            title="Add the details of this meal"><i class="fas fa-plus-circle" alt="Add"></i></a>
+                                        <!-- Change -->
+                                        <a id="wed-change" data-action="change" class="has-text-warning wed-actions"
+                                            href="#" title="Change the details of this meal"><i class="fas fa-pen" alt="Change"></i></a>
+                                        <!-- Remove -->
+                                        <a id="wed-remove" data-action="remove" class="has-text-danger wed-actions"
+                                            href="#" title="Remove the details of this meal"><span class="remove has-text-danger actions"><i
+                                                    class="fas fa-trash" alt="Remove"></i></span></a>
+                                    </td>
+                                </tr>
+                                <!--------------------------- End Wednesday --------------------------->
+                                <!--------------------------- Thursday --------------------------->
+                                <tr class="mealplan-cell" id="row-thursday">
+                                    <th>Thursday</th>
+                                    <td id="thu-recipe" class="recipe-link" contenteditable="false"><a href="#" title="recipe-name">
+                                            <!-- recipe name--></a></td>
+                                    <td id="thu-comment" contenteditable="false">
+                                        <!-- comment -->
+                                    </td>
+                                    <td class="day-actions">
+                                        <!-- Actions -->
+                                        <!-- Add -->
+                                        <a id="thu-add" data-action="add" class="has-text-success thu-actions is-hidden"
+                                            title="Add the details of this meal"><i class="fas fa-plus-circle" alt="Add"></i></a>
+                                        <!-- Change -->
+                                        <a id="thu-change" data-action="change" class="has-text-warning thu-actions"
+                                            href="#" title="Change the details of this meal"><i class="fas fa-pen" alt="Change"></i></a>
+                                        <!-- Remove -->
+                                        <a id="thu-remove" data-action="remove" class="has-text-danger thu-actions"
+                                            href="#" title="Remove the details of this meal"><span class="remove has-text-danger actions"><i
+                                                    class="fas fa-trash" alt="Remove"></i></span></a>
+                                    </td>
+                                </tr>
+                                <!--------------------------- End Thursday --------------------------->
+                                <!--------------------------- Friday --------------------------->
+                                <tr class="mealplan-cell" id="row-friday">
+                                    <th>Friday</th>
+                                    <td id="fri-recipe" class="recipe-link" contenteditable="false"><a href="#" title="recipe-name">
+                                            <!-- recipe name--></a></td>
+                                    <td id="fri-comment" contenteditable="false">
+                                        <!-- comment -->
+                                    </td>
+                                    <td class="day-actions">
+                                        <!-- Actions -->
+                                        <!-- Add -->
+                                        <a id="fri-add" data-action="add" class="has-text-success fri-actions is-hidden"
+                                            title="Add the details of this meal"><i class="fas fa-plus-circle" alt="Add"></i></a>
+                                        <!-- Change -->
+                                        <a id="fri-change" data-action="change" class="has-text-warning fri-actions"
+                                            href="#" title="Change the details of this meal"><i class="fas fa-pen" alt="Change"></i></a>
+                                        <!-- Remove -->
+                                        <a id="fri-remove" data-action="remove" class="has-text-danger fri-actions"
+                                            href="#" title="Remove the details of this meal"><span class="remove has-text-danger actions"><i
+                                                    class="fas fa-trash" alt="Remove"></i></span></a>
+                                    </td>
+                                </tr>
+                                <!--------------------------- End Friday --------------------------->
+                                <!--------------------------- Saturday --------------------------->
+                                <tr class="mealplan-cell" id="row-saturday">
+                                    <th>Saturday</th>
+                                    <td id="sat-recipe" class="recipe-link" contenteditable="false"><a href="#" title="recipe-name">
+                                            <!-- recipe name--></a></td>
+                                    <td id="sat-comment" contenteditable="false">
+                                        <!-- comment -->
+                                    </td>
+                                    <td class="day-actions">
+                                        <!-- Actions -->
+                                        <!-- Add -->
+                                        <a id="sat-add" data-action="add" class="has-text-success sat-actions is-hidden"
+                                            title="Add the details of this meal"><i class="fas fa-plus-circle" alt="Add"></i></a>
+                                        <!-- Change -->
+                                        <a id="sat-change" data-action="change" class="has-text-warning sat-actions"
+                                            href="#" title="Change the details of this meal"><i class="fas fa-pen" alt="Change"></i></a>
+                                        <!-- Remove -->
+                                        <a id="sat-remove" data-action="remove" class="has-text-danger sat-actions"
+                                            href="#" title="Remove the details of this meal"><span class="remove has-text-danger actions"><i
+                                                    class="fas fa-trash" alt="Remove"></i></span></a>
+                                    </td>
+                                </tr>
+                                <!--------------------------- End Saturday --------------------------->
+                                <!--------------------------- Sunday --------------------------->
+                                <tr class="mealplan-cell" id="row-sunday">
+                                    <th>Sunday</th>
+                                    <td id="sun-recipe" class="recipe-link" contenteditable="false"><a href="#" title="recipe-name">
+                                            <!-- recipe name--></a></td>
+
+                                    <td id="sun-comment" contenteditable="false">
+                                        <!-- comment -->
+                                    </td>
+                                    <td class="day-actions">
+                                        <!-- Actions -->
+                                        <!-- Add -->
+                                        <a id="sun-add" data-action="add" class="has-text-success sun-actions is-hidden"
+                                            title="Add the details of this meal"><i class="fas fa-plus-circle" alt="Add"></i></a>
+                                        <!-- Change -->
+                                        <a id="sun-change" data-action="change" class="has-text-warning sun-actions"
+                                            href="#" title="Change the details of this meal"><i class="fas fa-pen" alt="Change"></i></a>
+                                        <!-- Remove -->
+                                        <a id="sun-remove" data-action="remove" class="has-text-danger sun-actions"
+                                            href="#" title="Remove the details of this meal"><span class="remove has-text-danger actions"><i
+                                                    class="fas fa-trash" alt="Remove"></i></span></a>
+                                    </td>
+                                </tr>
+                                <!--------------------------- End Sunday --------------------------->
+                            </tbody>
+                        </table>
+
+                        <!-- End Testing new layout for weekly meal plan -->
+
+
+                    </article>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+        </div>
+    </section>
+
+
+
+    <!-- Saved Recipes -->
+    <!-- Create content area for saved recipes using tile + card + box -->
+
+    <section id="saved-recipes-display" class="hero is-bold is-dark">
+        <div class="hero-body">
+            <div class="container-fluid">
+                <h1 class="title">
+                    Saved Recipes
+                </h1>
+                <div id="saved-recipe" class="tile is-ancestor">
+
+                </div> <!-- End tile is-ancestor -->
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <!-- SEARCH FOR RESTAURANT -->
+    <section id="search-restaurants-in-area" class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <div class="footer-logo">
+                            <img class="is-square" src="assets/images/img-burgercooking.png">
+                        </div>
+                    </div>
+                    <div class="column is-three-quarters">
+                        <h3 class="title">
+                            Not enough time to cook? Search restaurants in your area:
+                        </h3>
+                        <label for="find-restaurant"><i class="icon is-left fas fa-map-marked-alt"></i> Enter city:</label>
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input id="find-restaurant" class="input" type="text" placeholder="Olathe, KS">
+                            </div>
+                            <div id="search-restaurant" class="control">
+                                <a class="button is-primary">
+                                    Search
+                                </a>
+                            </div>
+                        </div>
+                        <div id="restaurantArea">
+
+                        </div> <!-- restaurantArea -->
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!--  Footer -->
+    <footer class="footer footer-dark">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="footer-logo">
+                        
+                        <h3 class="site-logo title is-1 has-text-black">
+                                What's For<br> Dinner?
+                            </h3>
+                    </div>
+
+                </div>
+                
+                <div class="column">
+                    <div class="footer-column">
+                        <div class="footer-header">
+                            <h3>Product Features</h3>
+                        </div>
+                        <ul class="link-list">
+                            <li><a href="#start-search">Search for recipes</a></li>
+                            <li><a href="#start-menu-ideas">Use starter meal ideas</a></li>
+                            <li><a href="#search-random-recipe">Random a classing menu</a></li>
+                            <li><a href="#search-restaurants-in-area">Find restaurants in your area</a></li>
+                            <li><a href="#saved-recipes-display">View Saved recipes</a></li>
+                            <li><a href="#weekly-planner-body">Edit weekly meal planner</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="footer-column">
+                        
+                        <div class="footer-header">
+                            <h3>Technologies Used</h3>
+                        </div>
+                        <ul class="link-list">
+                            <li><a href="https://developer.edamam.com/edamam-recipe-api">Edamam Search API</a></li>
+                            <li><a href="https://developers.zomato.com/api">Zomato API</a></li>
+                            <li><a href="https://html2canvas.hertzen.com/">html2canvas JS</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="footer-column">
+                        <div class="footer-header">
+                            <h3>Follow Us</h3>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item" target="_blank" href="https://kysper.github.io/">                      
+                                        <img class="avatar" src="assets/images/avatar-victor.png" alt="Victor Adams">
+                                    </a>
+                                    <a class="level-item" target="_blank" href="https://timlukens.com/"> 
+                                        <img class="avatar" src="assets/images/avatar-tim.png" alt="Tim Lukens">
+                                    </a>
+                                    <a class="level-item" target="_blank" href="https://mjwalker99.github.io/Basic-Portfolio/">
+                                        <img class="avatar" src="assets/images/avatar-micah.png" alt="Micah Walker">
+                                    </a>
+                                    <a class="level-item" target="_blank" href="https://keenwilson.github.io/"">
+                                        <img class="avatar" src="assets/images/avatar-keen.png" alt="Keen Wilson">
+                                    </a>
+                                </div>
+                            </nav>
+                            <div class="field is-grouped">
+                                    <p class="control">
+                                        <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet"
+                                            data-social-target="http://bit.ly/KU-WhatsForDinner" target="_blank" href="https://twitter.com/intent/tweet?text=Use What's for Dinner? app to create a weekly meal plan in less than 10 minutes!&amp;hashtags=mommyhack&amp;url=http://bit.ly/KU-WhatsForDinner&amp;">
+                                            <span class="icon">
+                                                <i class="fab fa-twitter"></i>
+                                            </span>
+                                            <span>
+                                                Tweet
+                                            </span>
+                                        </a>
+                                    </p>
+              
+        
+                                    <p class="control">
+                                            <a class="button is-primary" href="https://github.com/keenwilson/group5-studio-meal-plan">
+                                                <span class="icon">
+                                                    <i class="fab fa-github"></i>
+                                                </span>
+                                                <span>View Source</span>
+                                            </a>
+                                        </p>
+                                </div>
+
+
+                            <a href="https://bulma.io" target="_blank">
+                                <img src="assets/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- End Footer -->
+
+
+
+
+    <!-- Link jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+    <!-- Link Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+
+    <!-- Link JavaScript -->
+    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/user.js"></script>
+
+    <script src="assets/javascript/table.js"></script>
+    <script src="assets/javascript/edamam.js"></script>
+    <script src="assets/javascript/database.js"></script>
+    <script src="assets/javascript/zomato.js"></script>
+    <script src="assets/javascript/html2canvas.min.js"></script>
+    <script src="assets/javascript/html2img.js"></script>
+
+
+    <!-- Link Carousel-->
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@3.0.0/dist/js/bulma-carousel.min.js"></script>
+</body>
+
+</html>

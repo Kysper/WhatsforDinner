@@ -1,0 +1,141 @@
+body {
+    font-family: 'Open Sans', sans-serif; 
+}
+
+
+.site-logo {
+    font-family: 'Cabin Sketch', cursive;
+    font-weight: 700;
+}
+
+#site-header {
+    background-image: url("../images/food-on-marble-countertop.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#display-recipe {
+    overflow: scroll;
+
+}
+
+.actions {
+    cursor: pointer;
+}
+
+.recipe-link,
+.recipeLink {
+    color: #3273dc;
+}
+.recipe-link:hover {
+    color: #363636;
+}
+
+#map {
+    height: 400px;
+}
+
+.ingredients-link {
+    color: #3273dc;
+}
+.ingredients-link:hover {
+    color: #363636;
+}
+
+#find-recipe {
+    width: 265px;
+}
+
+#mon-recipe,
+#tue-recipe,
+#wed-recipe,
+#thu-recipe,
+#fri-recipe,
+#sat-recipe,
+#sun-recipe {
+    width: 250px;
+}
+
+
+
+#mon-comment,
+#tue-comment,
+#wed-comment,
+#thu-recipe,
+#fri-comment,
+#sat-recipe,
+#sun-recipe {
+    width: 150px;
+}
+
+.modal-card-title,
+.show-ingredients-title, {
+    word-wrap: break-word;
+}
+
+.ingredients-list-title {
+    font-weight: 700;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+@media screen and (max-width: 770px) {
+    .card-image,
+    .image.is-square img,
+    .recipe-image {
+        width: 197.766px;
+        height: 197.766px;
+    }
+
+    .modal-card-head {
+        font-size: 1.25em;
+    }
+
+    .modal-card {
+        width: 375px;
+    }
+}
+
+
+
+/* Responsive Table */
+@media screen and (max-width: 500px) {
+
+       
+        .mealplan-cell { 
+            width: 375px;
+            padding: 1.5rem;
+        }
+
+        .day-actions {
+            display: none;
+        }
+
+        thead { display: none; }
+        tr {
+          display: block;
+          position: relative;
+          padding: 1.2em 0; }
+        tr:first-of-type { border-top: 1px solid #ccc; }
+        td { display: table-row; }
+        td:before {
+          content: attr(data-label);
+          display: table-cell;
+          font-weight: bold;
+          padding: 0.2em 0.6em 0.2em 0;
+          text-align: right; }
+        td:last-child:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-bottom: 1px solid #ccc; }
+
+}
