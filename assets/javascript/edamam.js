@@ -2,6 +2,8 @@ var recipeArr = [];
 var saveToPlanner = [];
 var randomRecipe = ["Slow Cooker Pot Roast", "Asian Chicken Skillet", "Easy Pulled Pork", "Shrimp Scampi", "One-Pot Chili", "Enchiladas", "Chicken Alfredo", "Coconut Breaded Shrimp", "Macaroni and Cheese", "Broccoli Chicken Teriyaki", "Turkey Meatballs"];
 var searchTerm = "";
+var api_key = 'baa53a54ac5ad45b363462cb298533d9'
+var app_id =  'cbd6368e';
 $(document).ready(function () {
     var searchFunction = function (searchTerm) {
 
@@ -9,9 +11,6 @@ $(document).ready(function () {
         recipeArr = [];
 
         console.log($("#find-recipe").val().trim())
-        // if ($("#find-recipe").val().trim() !== "") {
-        //     searchTerm = $("#find-recipe").val().trim();
-        // }
 
         queryURL = "https://api.edamam.com/search?q=" + searchTerm + "&app_id=" + app_id + "&app_key=" + api_key;
         $.ajax({
@@ -73,10 +72,6 @@ $(document).ready(function () {
         });
         $("#find-recipe").val("");
     }
-
-
-    app_id = "43a7d524";
-    api_key = "0f1843d32c0f5990d058cf960ffee888";
 
     $("#search-recipe").on("click", function (e) {
         if ($("#find-recipe").val() !== "") {
